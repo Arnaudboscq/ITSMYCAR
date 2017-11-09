@@ -59,7 +59,7 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     # whitelist params
-    params.permit(:name, :public_description, :is_public)
+    params.permit(:last_name, :public_description, :is_public, :nickname)
   end
 
   def set_campaign

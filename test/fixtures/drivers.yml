@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usual_distance_per_day: 1
+  destination_type: 1
+  user: one
+  description: MyText
+  bank_account: MyString
+  proof_of_address: MyString
+  parking_card: MyString
+  start_address: MyString
+  destination_address: MyString
+  journey_lenght_type: 1
+  journey_length: 1.5
+  journey_period: 1
+  extra_start_address: MyString
+  extra_destination_address: MyString
+  extra_journey_length: 1.5
+  start_address_zipcode: MyString
+  destination_address_zipcode: MyString
+
+two:
+  usual_distance_per_day: 1
+  destination_type: 1
+  user: two
+  description: MyText
+  bank_account: MyString
+  proof_of_address: MyString
+  parking_card: MyString
+  start_address: MyString
+  destination_address: MyString
+  journey_lenght_type: 1
+  journey_length: 1.5
+  journey_period: 1
+  extra_start_address: MyString
+  extra_destination_address: MyString
+  extra_journey_length: 1.5
+  start_address_zipcode: MyString
+  destination_address_zipcode: MyString

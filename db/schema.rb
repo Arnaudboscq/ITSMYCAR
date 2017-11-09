@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108144032) do
+ActiveRecord::Schema.define(version: 20171109105013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,29 @@ ActiveRecord::Schema.define(version: 20171108144032) do
     t.string "workflow_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.integer "usual_distance_per_day"
+    t.integer "destination_type"
+    t.bigint "user_id"
+    t.text "description"
+    t.string "bank_account"
+    t.string "proof_of_address"
+    t.string "parking_card"
+    t.string "start_address"
+    t.string "destination_address"
+    t.integer "journey_lenght_type"
+    t.float "journey_length"
+    t.integer "journey_period"
+    t.string "extra_start_address"
+    t.string "extra_destination_address"
+    t.float "extra_journey_length"
+    t.string "start_address_zipcode"
+    t.string "destination_address_zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,10 +91,12 @@ ActiveRecord::Schema.define(version: 20171108144032) do
     t.string "city"
     t.boolean "newsletter"
     t.boolean "is_etudiant"
+    t.boolean "is_driver"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "drivers", "users"
 end

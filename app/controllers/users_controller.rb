@@ -45,13 +45,12 @@ class UsersController < ApplicationController
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
-      binding.pry
     }
   end
 
   def user_params
     # whitelist params
-    params.permit(:last_name, :nickname)
+    params.permit(:last_name, :nickname, :first_name)
   end
 
   def set_user
