@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users
   resources :campaigns
   resources :drivers
+  resources :candidacies
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109105013) do
+ActiveRecord::Schema.define(version: 20171109145739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 20171109105013) do
     t.string "workflow_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "candidacies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "campaign_id"
+    t.string "workflow_state"
+    t.string "string"
+    t.boolean "profil_incomplet"
+    t.boolean "mauvaise_zone"
+    t.boolean "autre"
+    t.boolean "notif"
+    t.boolean "display"
+    t.boolean "notif_in_bo_discarded"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_candidacies_on_campaign_id"
+    t.index ["user_id"], name: "index_candidacies_on_user_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -98,5 +115,7 @@ ActiveRecord::Schema.define(version: 20171109105013) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "candidacies", "campaigns"
+  add_foreign_key "candidacies", "users"
   add_foreign_key "drivers", "users"
 end

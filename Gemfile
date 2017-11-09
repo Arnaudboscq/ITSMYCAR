@@ -26,6 +26,7 @@ gem 'puma', '~> 3.7'
 # gem 'rack-cors'
 
 gem 'devise_token_auth'
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :development, :test do
