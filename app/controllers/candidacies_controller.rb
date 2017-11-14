@@ -29,12 +29,14 @@ class CandidaciesController < ApplicationController
     @user = current_user
     @campaign = set_campaign
 
-    if not @user.candidacies.where(campaign_id: @campaign).exists?
+    if @user.is_driver == true && not @user.candidacies.where(campaign_id: @campaign).exists?
       @candidacy.user = @user
       @candidacy.campaign = @campaign
       @candidacy.workflow_state = "pending"
       @candidacy.save!
       render json: candidacy_json(@candidacy)
+    else
+      render json: error_message_already_in_campaign
     end
   end
   # GET /candidacies/:id
@@ -74,6 +76,12 @@ class CandidaciesController < ApplicationController
   def candidacy_params
     # whitelist params
     params.require(:candidacy).permit(:workflow_state)
+  end
+
+  def error_message_already_in_campaign
+    {
+      error_message: "Vous êtes déjà inscrit à cette campagne !"
+    }
   end
 
   def candidacy_params
